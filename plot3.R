@@ -3,7 +3,7 @@ pmSummary <- readRDS("summarySCC_PM25.rds")
 library(dplyr)
 library(ggplot2)
 
-#Prepare data
+# Prepare data
 dtPlot <- pmSummary %>% 
   filter(fips == "24510") %>% 
   select(Emissions, year, type) %>%
@@ -11,14 +11,16 @@ dtPlot <- pmSummary %>%
   group_by(year, type) %>%
   summarize(emission = sum(Emissions))
 
-#Build plotting object
+# Build plotting object
 plotObj <- qplot(year, emission, data = dtPlot, facets = . ~ type, geom = c("point", "smooth"), method = "lm") + 
   ggtitle("PM2.5 emissons by Types") + 
   theme(plot.title = element_text(face = "bold")) + 
   ylab("PM2.5 Emission") + 
   scale_x_continuous(breaks = c(2002, 2006))
 
-#print results
+# Print results
 png("plot3.png")
 print(plotObj)
 dev.off()
+
+rm(dtPlot, plotObj, pmSummary)

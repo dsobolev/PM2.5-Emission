@@ -13,4 +13,4 @@ plot(dtPlot, main = "PM2.5 Emission in Baltimore City", ylab = "PM2.5 Emission",
 with(dtPlot, abline(lm(total ~ year), lty = "18"))
 
 dev.off()
-rm(dtPlot)
+rm(dtPlot, pmSummary)
