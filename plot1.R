@@ -8,7 +8,7 @@ dtPlot <- pmSummary %>%
 
 png("plot1.png")
 
-plot(dtPlot, main = "PM2.5 Emission", ylab = "Total PM2.5 Emission", col = "red", pch = 19)
+plot(dtPlot, main = "PM2.5 Emission", ylab = "Total PM2.5 Emission", col = "red", type = "l")
 with(dtPlot, abline(lm(total ~ year), lty = "18"))
 
 dev.off()
